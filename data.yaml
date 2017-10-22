@@ -1,0 +1,87 @@
+visitor:
+  ip: string
+  time: Time
+  reqHost: string
+  resource: string
+  userAgent: string
+
+diary:
+  title: string
+  content: string
+  postscript: string
+  written: Time
+  lastUpdated: Time
+  attachment[]:
+    type: string
+    fileName: string
+
+/visitor:
+  GET:
+    params:
+      ip: string
+      startTime: Time
+      endTime: Time 
+      reqHost: string
+      resource: string
+      userAgent: string
+    response:
+      200:
+        message: string
+        data: visitor[]
+      403:
+        message: string
+  POST:
+    params:
+      ip: string
+      reqHost: string
+      resource: string
+      userAgent: string
+    response:
+      200:
+        message: string
+        data: visitor
+      403:
+        message: string
+
+/diary:
+  GET:
+    params:
+      id: string
+      writtenTimeStart: Time
+      writtenTimeEnd: Time
+      updateTimeStart: Time
+      updateTimeEnd: Time
+      title: string
+      content: string
+      postscript: string
+      attachmentType: string
+    response:
+      200:
+        message: string
+        data: diary[]
+      403:
+        message: string
+  POST:
+    params:
+      title: string
+      content: string
+      postscript: string
+      written: Time
+      attachment[]:
+        type: string
+        fileName: string
+    response:
+      200:
+        message: string
+        data: diary
+      403:
+        message: string
+
+  DELETE:
+    params:
+      id: string
+    response:
+      200:
+        message: string
+      403:
+        message: string
