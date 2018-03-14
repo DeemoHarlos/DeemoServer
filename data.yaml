@@ -6,14 +6,10 @@ visitor:
   userAgent: string
 
 diary:
+  id: string
   title: string
-  content: string
-  postscript: string
   written: Time
-  lastUpdated: Time
-  attachment[]:
-    type: string
-    fileName: string
+  tag: string[]
 
 /visitor:
   GET:

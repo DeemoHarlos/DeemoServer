@@ -24,11 +24,14 @@ mongoose.connect(config.database, function (err, res) {
 if (test) {
   app.use((req,res,next)=>{
     log.listenResEnd(req,res)
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
     next()
   })
 }
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+app.enable('trust proxy')
 app.get('/',(req,res)=>{log.statRes(res,200)})
 
 app.use('/diary',require('./diary'))
