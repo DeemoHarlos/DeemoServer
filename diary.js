@@ -1,7 +1,7 @@
 const fs = require('fs')
 const argv = require('minimist')(process.argv.slice(2));
-const datapath = (argv.d||'data') + '/diary/'
-var data = require(datapath + 'data')
+const datapath = (argv.d||'./data/') + 'diary/'
+var data = require(datapath + 'data.js')
 var app = require('express').Router()
 
 app.get('/',(req,res)=>{
